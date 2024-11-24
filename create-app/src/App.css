@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'Avenir-Book';
+  src: url('./assets/Avenir-Book.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+.App{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+}
+
+.titleName{
+  font-size: 45px;
+  font-family: 'Avenir-Book', sans-serif;
+  font-weight: 200;
+}
+
+
+

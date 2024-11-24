@@ -1,0 +1,157 @@
+@font-face {
+  font-family: 'Montserrat-Regular';
+  src: url('../assets/Montserrat-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir-Book';
+  src: url('../assets/Avenir-Book.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat-Medium';
+  src: url('../assets/Montserrat-Medium.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;      /* Center the cards horizontally */
+  align-items: center;          /* Center the cards vertically */
+  flex-wrap: wrap;              /* Allow wrapping of cards if there is not enough space */
+  gap: 16px;                    /* Set space between the cards */
+  padding: 16px;                /* Padding around the container */
+}
+
+.card {
+  width: 100%;                  /* Ensure each card takes up full width within its column */
+  max-width: 250px;             /* Set a maximum width for the card */
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 16px;
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+  text-align: left;
+  box-sizing: border-box;       /* Ensure padding is included in the width calculation */
+}
+
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column;     /* Stack cards vertically on smaller screens */
+    align-items: center;        /* Center the cards */
+  }
+  .card {
+    width:100%;                 /* Make cards take up 90% of the available width */
+    max-width: 500px;           /* Allow the card to expand more on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 100%;                /* Cards will take up the full width on very small screens */
+    max-width: 100%;            /* Remove the maximum width on very small screens */
+  }
+}
+  
+  .card-image {
+    margin-bottom: 12px;
+    text-align: center; 
+  }
+  
+  .product-image {
+    width: 100%;       
+    height: 100%;      
+    aspect-ratio: 1;   
+    object-fit: cover; 
+    border-radius: 30px;
+  }
+  
+  .card-details {
+    margin-top: 8px;
+  }
+  
+  .product-title {
+    font-size: 15px; 
+    color: #303030; 
+    font-family: 'Montserrat-Medium', sans-serif;
+    font-weight: 500;
+    margin: 8px 0; 
+  }
+  
+  .product-price {
+    font-size: 15px;
+    font-family: "Montserrat-Regular", sans-serif;
+    font-weight: 400;
+    color: #474747;
+  }
+  
+  .color-options {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    gap: 6px;
+  }
+  
+  .color-circle {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .color-label {
+    padding-top: 10px;
+    font-size: 12px;
+    font-family: 'Avenir-Book', sans-serif;
+    color: #666;
+  }
+  
+  .rating-section {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    gap: 4px;
+  }
+  
+  .stars {
+    display: flex;
+  }
+  
+  .filled-star {
+    color: #efcb87; 
+    font-size: 18px; 
+  }
+
+  .half-star {
+    font-size: 18px;
+    position: relative;
+    display: inline-block;
+    color: #d2d2d2;
+  }
+  
+  .half-star::before {
+    content: "★";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #efcb87;
+    clip-path: inset(0 50% 0 0); 
+  }
+  
+  .empty-star {
+    color: #d2d2d2; 
+    font-size: 18px;
+  }
+  
+  .rating-text {
+    font-size: 14px;
+    color: #666;
+    font-family: 'Avenir-Book', sans-serif;;
+  }
+  
