@@ -9,10 +9,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// Root route handler
-app.get("/", (req, res) => {
-  res.send("Welcome to the Products API!");
-});
+
 
 const getGoldPrice = async () => {
   try {
@@ -25,7 +22,7 @@ const getGoldPrice = async () => {
   }
 };
 
-app.get("/products", async (req, res) => {
+app.get("/", async (req, res) => {
   try {
     // Dynamically read the JSON file using fs
     const data = await fs.readFile("./products.json", "utf-8");
