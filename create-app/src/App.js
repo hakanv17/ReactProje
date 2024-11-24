@@ -1,5 +1,7 @@
 import './App.css';
 import CardList from './components/CardList';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function App() {
 

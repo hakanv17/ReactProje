@@ -13,7 +13,7 @@ app.use(express.json());
 
 const getGoldPrice = async () => {
   try {
-    const response = await fetch("https://api.metalpriceapi.com/v1/latest?api_key=e79590d6e2aaa55ece49d99499e941c6&base=USD&currencies=EUR,XAU,XAG");
+    const response = await fetch("https://api.metalpriceapi.com/v1/latest?api_key=1cabed476296837da1b1fdcc4bf25e79&base=USD&currencies=EUR,XAU,XAG");
     const data = await response.json();
     return data.rates.USDXAU/31.1; //once gold price (because USDXAU is 31.1 grams of gold)
   } catch (error) {

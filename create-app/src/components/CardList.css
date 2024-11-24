@@ -1,0 +1,42 @@
+.carousel-inner {
+    text-align: center;
+  }
+  
+  .carousel-item {
+    padding: 20px;
+  }
+  
+  .card-container {
+    flex: 1; 
+    max-width: 300px; 
+    margin: auto;
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: black; 
+    background-image: none; /* Ensure no image is being overridden */
+    border-radius: 50%; /* Circle shape */
+  }
+  
+  .carousel-control-prev-icon::before,
+  .carousel-control-next-icon::before {
+    font-family: "bootstrap-icons";
+    content: "\f104"; /* Left arrow icon */
+  }
+  
+  .carousel-control-next-icon::before {
+    content: "\f105"; /* Right arrow icon */
+  }
+  
+  /* Adjust the size of the icons */
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  
