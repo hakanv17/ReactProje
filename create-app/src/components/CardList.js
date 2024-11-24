@@ -5,6 +5,7 @@ const CardList = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0); // Active slide index for carousel
+  const [chunkedProducts, setChunkedProducts] = useState([]); // State to store chunked products
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -23,6 +24,33 @@ const CardList = () => {
     fetchProducts();
   }, []);
 
+  useEffect(() => {
+    // Dynamically adjust the chunk size based on screen size
+    const handleResize = () => {
+      if (window.innerWidth <= 480) {
+        setChunkedProducts(chunkProducts(1)); // 1 card per slide for small screens
+      } else if (window.innerWidth <= 768) {
+        setChunkedProducts(chunkProducts(2)); // 2 cards per slide for medium screens
+      } else {
+        setChunkedProducts(chunkProducts(4)); // 4 cards per slide for large screens
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Call it on initial load
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [products]); // Run this effect whenever products change
+
+  // Split products into chunks based on the number of cards per slide
+  const chunkProducts = (numCards) => {
+    const chunkedProducts = [];
+    for (let i = 0; i < products.length; i += numCards) {
+      chunkedProducts.push(products.slice(i, i + numCards));
+    }
+    return chunkedProducts;
+  };
+
   if (error) {
     return <p>Error: {error}</p>;
   }
@@ -31,15 +59,8 @@ const CardList = () => {
     return <p>Loading products...</p>;
   }
 
-  // Split products into chunks of 4
-  const chunkedProducts = [];
-  const chunkSize = 4;
-  for (let i = 0; i < products.length; i += chunkSize) {
-    chunkedProducts.push(products.slice(i, i + chunkSize));
-  }
-
   return (
-    <div style={{ width: "80%", margin: "auto", position: "relative" }}>
+    <div className="card-list-container">
       {/* Carousel with Indicators and Buttons */}
       <div
         id="carouselExampleDark"
@@ -95,9 +116,12 @@ const CardList = () => {
           style={{
             position: "absolute",
             top: "50%",
-            left: "-150px",
+            left: "-20px", // Reduced the margin
             transform: "translateY(-50%)",
             zIndex: 1,
+            width: "30px", // Reduced button size
+            height: "30px",
+            borderRadius: "50%", // Ensures the button is round
           }}
         >
           <span className="carousel-control-prev-icon" aria-hidden="true">
@@ -115,9 +139,12 @@ const CardList = () => {
           style={{
             position: "absolute",
             top: "50%",
-            right: "-150px",
+            right: "-30px", // Reduced the margin
             transform: "translateY(-50%)",
             zIndex: 1,
+            width: "30px", // Reduced button size
+            height: "30px",
+            borderRadius: "50%", // Ensures the button is round
           }}
         >
           <span className="carousel-control-next-icon" aria-hidden="true">
@@ -127,14 +154,58 @@ const CardList = () => {
         </button>
       </div>
 
-      {/* Move Swiper Further Down */}
       <style jsx>{`
-        .carousel-indicators {
-          margin-top: 20px; /* Adds space between carousel and indicators */
-          margin-bottom: -1rem; /* Moves the indicators closer to the bottom */
+        .card-list-container {
+          width: 100%;
+          max-width: 1200px;
+          margin: auto;
+          position: relative;
+          padding: 0 15px;
         }
-        .carousel-control-prev, .carousel-control-next {
-          top: 70%; /* Moves the next/previous buttons further down */
+
+        .carousel-indicators {
+          margin-top: 20px;
+          margin-bottom: -1rem;
+        }
+
+        .carousel-inner {
+          text-align: center;
+        }
+
+        .carousel-item {
+          padding: 20px;
+        }
+
+        .card-container {
+          flex: 1;
+          max-width: 300px;
+          margin: auto;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+          .carousel-item {
+            padding: 10px;
+          }
+
+          .card-container {
+            max-width: 220px;
+          }
+
+          .carousel-indicators {
+            margin-bottom: 0;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .card-container {
+            max-width: 180px;
+          }
+
+          .carousel-control-prev,
+          .carousel-control-next {
+            top: 55%;
+          }
         }
       `}</style>
     </div>
