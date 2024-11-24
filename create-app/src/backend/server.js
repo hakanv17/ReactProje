@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import fetch from "node-fetch"; // For gold price API
-import products from "./products.json";
+import products from "./products.json" assert { type: "json" };
 
 const app = express();
 const PORT = process.env.PORT || 3000;
