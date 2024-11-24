@@ -4,8 +4,8 @@ import Card from "./Card";
 const CardList = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
-  const [activeIndex, setActiveIndex] = useState(0); // Active slide index for carousel
-  const [chunkedProducts, setChunkedProducts] = useState([]); // State to store chunked products
+  const [activeIndex, setActiveIndex] = useState(0); 
+  const [chunkedProducts, setChunkedProducts] = useState([]); 
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -25,24 +25,23 @@ const CardList = () => {
   }, []);
 
   useEffect(() => {
-    // Dynamically adjust the chunk size based on screen size
     const handleResize = () => {
       if (window.innerWidth <= 480) {
-        setChunkedProducts(chunkProducts(1)); // 1 card per slide for small screens
+        setChunkedProducts(chunkProducts(1)); 
       } else if (window.innerWidth <= 768) {
-        setChunkedProducts(chunkProducts(2)); // 2 cards per slide for medium screens
+        setChunkedProducts(chunkProducts(2)); 
       } else {
-        setChunkedProducts(chunkProducts(4)); // 4 cards per slide for large screens
+        setChunkedProducts(chunkProducts(4));
       }
     };
 
     window.addEventListener("resize", handleResize);
-    handleResize(); // Call it on initial load
+    handleResize(); 
 
     return () => window.removeEventListener("resize", handleResize);
-  }, [products]); // Run this effect whenever products change
+  }, [products]); 
 
-  // Split products into chunks based on the number of cards per slide
+ 
   const chunkProducts = (numCards) => {
     const chunkedProducts = [];
     for (let i = 0; i < products.length; i += numCards) {
@@ -61,13 +60,11 @@ const CardList = () => {
 
   return (
     <div className="card-list-container">
-      {/* Carousel with Indicators and Buttons */}
       <div
         id="carouselExampleDark"
         className="carousel carousel-dark slide"
         data-bs-ride="carousel"
       >
-        {/* Carousel Indicators */}
         <div className="carousel-indicators">
           {chunkedProducts.map((_, index) => (
             <button
@@ -82,7 +79,6 @@ const CardList = () => {
           ))}
         </div>
 
-        {/* Carousel Items */}
         <div className="carousel-inner">
           {chunkedProducts.map((group, index) => (
             <div
@@ -107,7 +103,6 @@ const CardList = () => {
           ))}
         </div>
 
-        {/* Previous Button (Outside Carousel) */}
         <button
           className="carousel-control-prev"
           type="button"
@@ -116,12 +111,12 @@ const CardList = () => {
           style={{
             position: "absolute",
             top: "50%",
-            left: "-20px", // Reduced the margin
+            left: "-20px", 
             transform: "translateY(-50%)",
             zIndex: 1,
-            width: "30px", // Reduced button size
+            width: "30px",
             height: "30px",
-            borderRadius: "50%", // Ensures the button is round
+            borderRadius: "50%", 
           }}
         >
           <span className="carousel-control-prev-icon" aria-hidden="true">
@@ -129,8 +124,6 @@ const CardList = () => {
           </span>
           <span className="visually-hidden">Previous</span>
         </button>
-
-        {/* Next Button (Outside Carousel) */}
         <button
           className="carousel-control-next"
           type="button"
@@ -139,12 +132,12 @@ const CardList = () => {
           style={{
             position: "absolute",
             top: "50%",
-            right: "-20px", // Reduced the margin
+            right: "-20px", 
             transform: "translateY(-50%)",
             zIndex: 1,
-            width: "30px", // Reduced button size
+            width: "30px", 
             height: "30px",
-            borderRadius: "50%", // Ensures the button is round
+            borderRadius: "50%", 
           }}
         >
           <span className="carousel-control-next-icon" aria-hidden="true">
