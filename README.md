@@ -1,6 +1,6 @@
 Start Server:
 cd backend
-nodem server.js
+nodemon server.js
 
 Start Frontent
 cd src
