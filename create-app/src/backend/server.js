@@ -1,21 +1,19 @@
 import express from "express";
 import cors from "cors";
 import fetch from "node-fetch"; // For gold price API
-import products from "./products.json" assert { type: "json" };
+import { promises as fs } from "fs"; // Use fs.promises to read files
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-
 app.use(cors());
 app.use(express.json());
-
 
 const getGoldPrice = async () => {
   try {
     const response = await fetch("https://api.metalpriceapi.com/v1/latest?api_key=80f5cbbd5cc039a2b4a89c8c6222a9c3&base=USD&currencies=EUR,XAU,XAG");
     const data = await response.json();
-    return data.rates.USDXAU/31.1; //once gold price (because USDXAU is 31.1 grams of gold)
+    return data.rates.USDXAU / 31.1; // Calculate gold price per gram
   } catch (error) {
     console.error("Error fetching gold price:", error);
     return null;
@@ -24,6 +22,10 @@ const getGoldPrice = async () => {
 
 app.get("/products", async (req, res) => {
   try {
+    // Dynamically read the JSON file using fs
+    const data = await fs.readFile("./products.json", "utf-8");
+    const products = JSON.parse(data); // Parse the file content to JSON
+
     const goldPrice = await getGoldPrice();
     if (!goldPrice) {
       return res.status(500).json({ error: "Failed to fetch gold price" });
@@ -36,6 +38,7 @@ app.get("/products", async (req, res) => {
 
     res.json(updatedProducts);
   } catch (error) {
+    console.error("Error:", error);
     res.status(500).json({ error: "An error occurred while fetching products." });
   }
 });
