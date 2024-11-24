@@ -9,6 +9,11 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+// Root route handler
+app.get("/", (req, res) => {
+  res.send("Welcome to the Products API!");
+});
+
 const getGoldPrice = async () => {
   try {
     const response = await fetch("https://api.metalpriceapi.com/v1/latest?api_key=80f5cbbd5cc039a2b4a89c8c6222a9c3&base=USD&currencies=EUR,XAU,XAG");
