@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 
 const getGoldPrice = async () => {
   try {
-    const response = await fetch("https://api.metalpriceapi.com/v1/latest?api_key=80f5cbbd5cc039a2b4a89c8c6222a9c3&base=USD&currencies=EUR,XAU,XAG");
+    const response = await fetch("https://api.metalpriceapi.com/v1/latest?api_key=a33193bdf861a51cefe70b5067a5a500&base=USD&currencies=EUR,XAU,XAG");
     const data = await response.json();
     return data.rates.USDXAU / 31.1; // Calculate gold price per gram
   } catch (error) {
