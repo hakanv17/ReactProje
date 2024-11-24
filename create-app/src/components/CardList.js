@@ -10,7 +10,7 @@ const CardList = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:3000/products");
+        const response = await fetch("https://reactproje-api.onrender.com");
         if (!response.ok) {
           throw new Error("Failed to fetch products");
         }
