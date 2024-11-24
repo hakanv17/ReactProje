@@ -139,7 +139,7 @@ const CardList = () => {
           style={{
             position: "absolute",
             top: "50%",
-            right: "-30px", // Reduced the margin
+            right: "-20px", // Reduced the margin
             transform: "translateY(-50%)",
             zIndex: 1,
             width: "30px", // Reduced button size
