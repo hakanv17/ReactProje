@@ -4,8 +4,8 @@ import Card from "./Card";
 const CardList = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
-  const [activeIndex, setActiveIndex] = useState(0); 
-  const [chunkedProducts, setChunkedProducts] = useState([]); 
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [chunkedProducts, setChunkedProducts] = useState([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -27,21 +27,20 @@ const CardList = () => {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 480) {
-        setChunkedProducts(chunkProducts(1)); 
+        setChunkedProducts(chunkProducts(1)); // 1 card for mobile
       } else if (window.innerWidth <= 768) {
-        setChunkedProducts(chunkProducts(2)); 
+        setChunkedProducts(chunkProducts(2)); // 2 cards for tablet
       } else {
-        setChunkedProducts(chunkProducts(4));
+        setChunkedProducts(chunkProducts(4)); // 4 cards for desktop
       }
     };
 
     window.addEventListener("resize", handleResize);
-    handleResize(); 
+    handleResize(); // Initial setup
 
     return () => window.removeEventListener("resize", handleResize);
-  }, [products]); 
+  }, [products]);
 
- 
   const chunkProducts = (numCards) => {
     const chunkedProducts = [];
     for (let i = 0; i < products.length; i += numCards) {
@@ -111,12 +110,12 @@ const CardList = () => {
           style={{
             position: "absolute",
             top: "50%",
-            left: "-20px", 
+            left: "-20px",
             transform: "translateY(-50%)",
             zIndex: 1,
             width: "30px",
             height: "30px",
-            borderRadius: "50%", 
+            borderRadius: "50%",
           }}
         >
           <span className="carousel-control-prev-icon" aria-hidden="true">
@@ -132,12 +131,12 @@ const CardList = () => {
           style={{
             position: "absolute",
             top: "50%",
-            right: "-20px", 
+            right: "-20px",
             transform: "translateY(-50%)",
             zIndex: 1,
-            width: "30px", 
+            width: "30px",
             height: "30px",
-            borderRadius: "50%", 
+            borderRadius: "50%",
           }}
         >
           <span className="carousel-control-next-icon" aria-hidden="true">
@@ -192,7 +191,12 @@ const CardList = () => {
 
         @media (max-width: 480px) {
           .card-container {
-            max-width: 180px;
+            max-width: 100%;
+            margin: 0 auto;
+          }
+
+          .carousel-item {
+            padding: 5px;
           }
 
           .carousel-control-prev,
