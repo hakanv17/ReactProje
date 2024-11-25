@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className='titleName'>Product List</h1>
+      <h1 className='titleName'>Product List:</h1>
       <div className='CardList'><CardList /></div>
     </div>
   );
