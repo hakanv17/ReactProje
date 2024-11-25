@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/ReactProje/static/css/main.91f4bd77.css",
+    "main.js": "/ReactProje/static/js/main.9b47bbc2.js",
+    "static/media/Montserrat-Regular.ttf": "/ReactProje/static/media/Montserrat-Regular.3bc90003d4868fece872.ttf",
+    "static/media/Montserrat-Medium.otf": "/ReactProje/static/media/Montserrat-Medium.4b4a4b36283ebeb2cf89.otf",
+    "static/media/Avenir-Book.ttf": "/ReactProje/static/media/Avenir-Book.45721c895eddd5961b80.ttf",
+    "index.html": "/ReactProje/index.html",
+    "main.91f4bd77.css.map": "/ReactProje/static/css/main.91f4bd77.css.map",
+    "main.9b47bbc2.js.map": "/ReactProje/static/js/main.9b47bbc2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.91f4bd77.css",
+    "static/js/main.9b47bbc2.js"
+  ]
+}
